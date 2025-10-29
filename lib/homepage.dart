@@ -68,8 +68,6 @@ class ItemHomepage {
 }
 
 class ItemCard extends StatelessWidget {
-  // Menampilkan kartu dengan ikon dan nama.
-
   final ItemHomepage item;
 
   const ItemCard(this.item, {super.key});
@@ -78,15 +76,15 @@ class ItemCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       color: item.color,
-      borderRadius: BorderRadius.circular(12),
-
+      borderRadius: BorderRadius.circular(30),
       child: InkWell(
+        borderRadius: BorderRadius.circular(30),
         onTap: () {
           ScaffoldMessenger.of(context)
             ..hideCurrentSnackBar()
             ..showSnackBar(
               SnackBar(
-                backgroundColor: Theme.of(context).colorScheme.primary,
+                backgroundColor: item.color,
                 content: Text(
                   "Kamu telah menekan tombol ${item.name}",
                   style: TextStyle(color: Colors.white),
