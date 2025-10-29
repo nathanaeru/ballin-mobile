@@ -7,7 +7,7 @@ _**DISCLAIMER**: Repositori ini dibuat untuk rangkaian tugas individu mata kulia
 Projek ini adalah _mobile app_ untuk aplikasi toko sepak bola _online_ yang dibuat dengan _framework_ Flutter.
 
 <details>
-<summary><h2><b>Jawaban Pertanyaan Tugas 6</b></h2></summary>
+<summary><h2><b>Jawaban Pertanyaan Tugas 7</b></h2></summary>
 
 ### Jelaskan apa itu _widget tree_ pada Flutter dan bagaimana hubungan _parent-child_ (induk-anak) bekerja antar widget.
 
