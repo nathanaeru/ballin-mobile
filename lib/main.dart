@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ballin_mobile/homepage.dart';
+import 'package:ballin_mobile/screens/homepage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,11 +14,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        brightness: Brightness.dark,
-        colorScheme: ColorScheme.dark(
-          primary: const Color.fromARGB(255, 132, 0, 255),
-          secondary: const Color.fromARGB(255, 152, 94, 219),
-          surface: const Color.fromARGB(255, 30, 0, 78),
+        brightness: Brightness.light,
+        colorScheme: ColorScheme.light(
+          primary: const Color.fromARGB(255, 0, 145, 254),
+          secondary: const Color.fromARGB(255, 174, 206, 254),
+          surface: const Color.fromARGB(255, 255, 254, 254),
         ),
       ),
       home: MyHomePage(),
