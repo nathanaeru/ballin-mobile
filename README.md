@@ -61,3 +61,45 @@ Penerapannya yang paling umum adalah pada metode `build`, di mana `BuildContext`
 _Hot reload_ adalah fitur di Flutter yang sangat bermanfaat untuk proses _debugging_, di mana fitur ini memungkinkan pengembang untuk mengaplikasikan perubahan pada kode aplikasi secara cepat, dengan menginjeksikan kode yang telah diperbarui pada Dart VM dan membangun ulang _widget tree_, mempertahankan _state_ aplikasi. Hal ini berbeda dengan _hot restart_ yang memulai kembali aplikasi dari awal dan mengubah _state_ aplikasi ke _state_ inisial. Kelebihan _hot reload_ adalah cara ini cepat dan mempertahankan _state_ aplikasi, cocok untuk perubahan pada UI dan logika yang minor. Akan tetapi, _hot reload_ tidak menerapkan perubahan pada variabel global dan kode di luar _widget tree_. Untuk kasus ini, _hot restart_ adalah cara yang dibutuhkan untuk mengaplikasikan perubahan tersebut.
 
 </details>
+
+<details>
+<summary><h2><b>Jawaban Pertanyaan Tugas 8</b></h2></summary>
+
+### Jelaskan perbedaan antara `Navigator.push()` dan `Navigator.pushReplacement()` pada Flutter. Dalam kasus apa sebaiknya masing-masing digunakan pada aplikasi Football Shop kamu?
+
+`Navigator.push()` bertujuan menambahkan rute baru (dalam hal ini tampilan/_screen_ aplikasi) ke _stack_ navigasi, yang mana hal ini memungkinkan pengguna untuk kembali ke halaman sebelumnya, yang ditangani oleh `Navigation.pop()`. Metode ini digunakan untuk membuat _routing_ di mana pengguna dapat mengulang (_undo_) _state_ sebelumnya, seperti dari halaman beranda (_homepage_) kemudian ke halaman detail _post_/produk kemudian kembali lagi ke _homepage_.
+
+`Navigator.pushReplacement()` menggantikan rute yang saat ini ditampilkan dengan rute baru, dengan cara hapus (`pop`) rute saat ini dan tambahkan (`push`) rute yang baru. Metode ini digunakan untuk membuat _routing_ di mana pengguna tidak dapat mengulang (_undo_) _state_ sebelumnya, seperti peralihan dari _splash screen_ ke tampilan utama aplikasi.
+
+### Bagaimana kamu memanfaatkan _hierarchy widget_ seperti `Scaffold`, `AppBar`, dan `Drawer` untuk membangun struktur halaman yang konsisten di seluruh aplikasi?
+
+_Hierarchy widget_ dimanfaatkan untuk membangun struktur halaman konsisten di seluruh aplikasi.
+
+-   `Scaffold` digunakan untuk membungkus tampilan utama (_screen_) dari setiap aplikasi, di mana `Scaffold` menyediakan slot standar untuk elemen-elemen seperti `AppBar`, `Drawer`, dan `Body`.
+-   `AppBar` adalah _header_ aplikasi, di mana _widget_ ini ditempatkan di properti `appBar` di `Scaffold`. `AppBar` ini digunakan untuk menampilkan judul halaman dan tombol aksi (untuk aktivasi `Drawer`) yang konsisten di seluruh aplikasi.
+-   `Drawer` adalah menu samping (_sidebar_) yang berisi tautan ke berbagai bagian aplikasi (dalam hal ini `Home` dan `Add Product`). Hasilnya, pengguna dapat mengakses menu navigasi yang sama dari mana saja, menciptakan pengalaman navigasi yang mulus dan dapat diprediksi.
+
+### Dalam konteks desain antarmuka, apa kelebihan menggunakan _layout widget_ seperti `Padding`, `SingleChildScrollView`, dan `ListView` saat menampilkan elemen-elemen form? Berikan contoh penggunaannya dari aplikasi kamu.
+
+-   `Padding` digunakan untuk memberikan ruang kosong di pinggiran suatu elemen sehingga tidak langsung menempel dengan elemen lain. Hal ini membuat tampilan yang lebih terbaca, rapi, dan menarik. Ini digunakan di banyak elemen seperti membungkus setiap elemen pada _form_ penambahan produk.
+-   `SingleChildScrollView` digunakan untuk membuat suatu elemen menjadi bisa di-_scroll_. Ini sangat berguna untuk mencegah beberapa bagian elemen yang ukurannya melebihi _viewport_ tidak dapat diakses. Dalam aplikasi ini, `SingleChildScrollView` digunakan untuk membungkus `body` dari tampilan `AddProduct` agar _form_ dapat di-_scroll_ ke bawah.
+-   `ListView` digunakan untuk membuat tampilan beberapa elemen yang tersusun dalam suatu daftar linear. Ini berguna untuk menampilkan beberapa elemen dengan posisi yang searah, misal semua elemen tersusun secara horizontal atau vertikal. Dalam aplikasi ini, `ListView` digunakan sebagai `child` dari `LeftDrawer` yang digunakan untuk menyusun elemen-elemen `Drawer` secara vertikal.
+
+### Bagaimana kamu menyesuaikan warna tema agar aplikasi Football Shop memiliki identitas visual yang konsisten dengan brand toko?
+
+Warna tema disesuaikan di `main.dart` ketika proses _building_ dari `MyApp`. Atribut yang digunakan untuk tema adalah `theme`. Sebagai contoh, aplikasi ini menerapkan tema sebagai berikut.
+
+```dart
+theme: ThemeData(
+    brightness: Brightness.light,
+    colorScheme: ColorScheme.light(
+        primary: const Color.fromARGB(255, 0, 145, 254),
+        secondary: const Color.fromARGB(255, 174, 206, 254),
+        surface: const Color.fromARGB(255, 255, 254, 254),
+    ),
+),
+```
+
+Ini menandakan bahwa aplikasi menggunakan tema cerah (_light theme_) dan menggunakan skema warna primer, sekunder, dan permukaan (latar belakang) seperti di atas. Tema ini konsisten dengan skema warna yang dipakai di versi _web app_ dari aplikasi ([https://nathanael-leander-ballin.pbp.cs.ui.ac.id/](https://nathanael-leander-ballin.pbp.cs.ui.ac.id/)).
+
+</details>
