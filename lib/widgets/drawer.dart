@@ -19,7 +19,10 @@ class LeftDrawer extends StatelessWidget {
         children: <Widget>[
           DrawerHeader(
             decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.secondary,
+              image: const DecorationImage(
+                image: AssetImage('assets/images/welcome-bg.png'),
+                fit: BoxFit.cover,
+              ),
             ),
             child: Column(
               children: [
@@ -29,7 +32,7 @@ class LeftDrawer extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
-                    color: Colors.black,
+                    color: Colors.white,
                   ),
                 ),
                 Padding(padding: EdgeInsets.all(10)),
@@ -39,7 +42,7 @@ class LeftDrawer extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.normal,
-                    color: Colors.black,
+                    color: Colors.white,
                   ),
                 ),
               ],

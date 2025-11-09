@@ -35,17 +35,30 @@ class MyHomePage extends StatelessWidget {
                   const SizedBox(height: 16.0),
                   Center(
                     child: Column(
-                      children: [
-                        const Padding(
-                          padding: EdgeInsets.only(top: 16.0),
-                          child: Text(
-                            "Welcome to Ballin!",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18.0,
+                      children: <Widget>[
+                        Container(
+                          height: 200,
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(30),
+                            image: const DecorationImage(
+                              image: AssetImage('assets/images/welcome-bg.png'),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          child: const Center(
+                            child: Text(
+                              'Welcome to Ballin!',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 30,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
                             ),
                           ),
                         ),
+                        const Padding(padding: EdgeInsets.only(top: 16.0)),
                         GridView.count(
                           primary: true,
                           padding: const EdgeInsets.all(20),
