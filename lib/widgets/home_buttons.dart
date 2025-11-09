@@ -27,10 +27,10 @@ class HomeButton extends StatelessWidget {
             ..showSnackBar(
               SnackBar(
                 behavior: SnackBarBehavior.floating,
-                backgroundColor: const Color.fromARGB(150, 255, 255, 255),
+                backgroundColor: item.color.withAlpha(200),
                 content: Text(
                   "Kamu telah menekan tombol ${item.name}",
-                  style: const TextStyle(color: Colors.black),
+                  style: const TextStyle(color: Colors.white),
                 ),
               ),
             );

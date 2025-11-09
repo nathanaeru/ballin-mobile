@@ -154,7 +154,7 @@ class _ProductFormState extends State<ProductForm> {
                         ),
                       ),
                     ),
-                    value: _category,
+                    initialValue: _category,
                     items: _categories.map((String category) {
                       return DropdownMenuItem<String>(
                         value: category,

@@ -102,4 +102,20 @@ theme: ThemeData(
 
 Ini menandakan bahwa aplikasi menggunakan tema cerah (_light theme_) dan menggunakan skema warna primer, sekunder, dan permukaan (latar belakang) seperti di atas. Tema ini konsisten dengan skema warna yang dipakai di versi _web app_ dari aplikasi ([https://nathanael-leander-ballin.pbp.cs.ui.ac.id/](https://nathanael-leander-ballin.pbp.cs.ui.ac.id/)).
 
+Untuk mengakses warna tema tersebut, dapat digunakan `Theme.of(context).colorScheme`, sebagai contoh, pada Homepage bagian inisialisasi AppBar:
+```dart
+...
+@override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          "Ballin",
+          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+        ),
+        centerTitle: true,
+        backgroundColor: Theme.of(context).colorScheme.secondary,
+...
+```
+
 </details>
