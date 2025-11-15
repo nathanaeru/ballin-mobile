@@ -6,6 +6,9 @@ _**DISCLAIMER**: Repositori ini dibuat untuk rangkaian tugas individu mata kulia
 
 Projek ini adalah _mobile app_ untuk aplikasi toko sepak bola _online_ yang dibuat dengan _framework_ Flutter.
 
+Deployment URL (Django): [https://nathanael-leander-ballin.pbp.cs.ui.ac.id/](https://nathanael-leander-ballin.pbp.cs.ui.ac.id/)
+Download APK file: [https://github.com/nathanaeru/ballin-mobile/releases/download/Release/app-release.apk](https://github.com/nathanaeru/ballin-mobile/releases/download/Release/app-release.apk)
+
 <details>
 <summary><h2><b>Jawaban Pertanyaan Tugas 7</b></h2></summary>
 
