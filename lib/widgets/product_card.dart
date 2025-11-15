@@ -17,6 +17,15 @@ class ProductCard extends StatelessWidget {
     return currencyFormatter.format(price);
   }
 
+  String _truncateText(String text, int wordLimit) {
+    List<String> words = text.split(' ');
+    if (words.length <= wordLimit) {
+      return text;
+    } else {
+      return words.sublist(0, wordLimit).join(' ') + '...';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final badges = <Widget>[];
@@ -86,7 +95,7 @@ class ProductCard extends StatelessWidget {
                 Text(
                   product.name,
                   style: const TextStyle(
-                    fontSize: 16.0,
+                    fontSize: 20.0,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -94,15 +103,33 @@ class ProductCard extends StatelessWidget {
                 Text(
                   "Seller: ${product.username}",
                   style: const TextStyle(
-                    fontSize: 10.0,
+                    fontSize: 14.0,
                     fontWeight: FontWeight.normal,
                     color: Colors.grey,
                   ),
                 ),
                 const SizedBox(height: 4.0),
                 Text(
+                  "Category: ${product.category}",
+                  style: const TextStyle(
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.normal,
+                    color: Color.fromARGB(255, 49, 49, 49),
+                  ),
+                ),
+                const SizedBox(height: 4.0),
+                Text(
                   _formatPrice(product.price),
-                  style: const TextStyle(fontSize: 14.0, color: Colors.black87),
+                  style: const TextStyle(fontSize: 18.0, color: Colors.black87),
+                ),
+                const SizedBox(height: 4.0),
+                Text(
+                  _truncateText(product.description, 20),
+                  style: const TextStyle(
+                    fontSize: 14.0,
+                    fontWeight: FontWeight.normal,
+                    color: Colors.grey,
+                  ),
                 ),
               ],
             ),
