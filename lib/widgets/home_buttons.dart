@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ballin_mobile/screens/add_product.dart';
+import 'package:ballin_mobile/screens/all_product_list.dart';
+import 'package:ballin_mobile/screens/my_product_list.dart';
 
 class ItemHomepage {
   final String name;
@@ -11,8 +13,9 @@ class ItemHomepage {
 
 class HomeButton extends StatelessWidget {
   final ItemHomepage item;
+  final String? username;
 
-  const HomeButton(this.item, {super.key});
+  const HomeButton(this.item, this.username, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -35,9 +38,26 @@ class HomeButton extends StatelessWidget {
               ),
             );
           if (item.name == "Create Product") {
-            Navigator.pushReplacement(
+            Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => ProductForm()),
+              MaterialPageRoute(
+                builder: (context) => ProductForm(username: this.username),
+              ),
+            );
+          } else if (item.name == "All Products") {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ProductListPage(username: this.username),
+              ),
+            );
+          } else if (item.name == "My Products") {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) =>
+                    MyProductListPage(username: this.username),
+              ),
             );
           }
         },

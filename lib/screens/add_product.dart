@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:ballin_mobile/widgets/drawer.dart';
+import 'dart:convert';
+import 'package:provider/provider.dart';
+import 'package:pbp_django_auth/pbp_django_auth.dart';
+import 'package:ballin_mobile/screens/homepage.dart';
 
 class ProductForm extends StatefulWidget {
-  const ProductForm({super.key});
+  final String? username;
+
+  const ProductForm({super.key, this.username});
 
   @override
   _ProductFormState createState() => _ProductFormState();
@@ -32,6 +38,7 @@ class _ProductFormState extends State<ProductForm> {
 
   @override
   Widget build(BuildContext context) {
+    final request = context.watch<CookieRequest>();
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -42,7 +49,7 @@ class _ProductFormState extends State<ProductForm> {
         backgroundColor: Theme.of(context).colorScheme.secondary,
         foregroundColor: Colors.black,
       ),
-      drawer: const LeftDrawer(),
+      drawer: LeftDrawer(username: widget.username),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -56,23 +63,8 @@ class _ProductFormState extends State<ProductForm> {
                     decoration: InputDecoration(
                       hintText: "Insert product name",
                       labelText: "Product Name",
-                      errorStyle: const TextStyle(color: Colors.red),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      errorBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                        borderSide: const BorderSide(
-                          color: Colors.red,
-                          width: 2.0,
-                        ),
-                      ),
-                      focusedErrorBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                        borderSide: const BorderSide(
-                          color: Colors.red,
-                          width: 2.0,
-                        ),
                       ),
                     ),
                     onChanged: (String? value) {
@@ -96,23 +88,8 @@ class _ProductFormState extends State<ProductForm> {
                     decoration: InputDecoration(
                       hintText: "Insert product brand",
                       labelText: "Product Brand",
-                      errorStyle: const TextStyle(color: Colors.red),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      errorBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                        borderSide: const BorderSide(
-                          color: Colors.red,
-                          width: 2.0,
-                        ),
-                      ),
-                      focusedErrorBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                        borderSide: const BorderSide(
-                          color: Colors.red,
-                          width: 2.0,
-                        ),
                       ),
                     ),
                     onChanged: (String? value) {
@@ -135,23 +112,8 @@ class _ProductFormState extends State<ProductForm> {
                   child: DropdownButtonFormField<String>(
                     decoration: InputDecoration(
                       labelText: "Product Category",
-                      errorStyle: const TextStyle(color: Colors.red),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      errorBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                        borderSide: const BorderSide(
-                          color: Colors.red,
-                          width: 2.0,
-                        ),
-                      ),
-                      focusedErrorBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                        borderSide: const BorderSide(
-                          color: Colors.red,
-                          width: 2.0,
-                        ),
                       ),
                     ),
                     initialValue: _category,
@@ -182,23 +144,8 @@ class _ProductFormState extends State<ProductForm> {
                     decoration: InputDecoration(
                       hintText: "Insert product price",
                       labelText: "Product Price",
-                      errorStyle: const TextStyle(color: Colors.red),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      errorBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                        borderSide: const BorderSide(
-                          color: Colors.red,
-                          width: 2.0,
-                        ),
-                      ),
-                      focusedErrorBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                        borderSide: const BorderSide(
-                          color: Colors.red,
-                          width: 2.0,
-                        ),
                       ),
                     ),
                     onChanged: (String? value) {
@@ -225,23 +172,8 @@ class _ProductFormState extends State<ProductForm> {
                     decoration: InputDecoration(
                       hintText: "Insert product stock",
                       labelText: "Product Stock",
-                      errorStyle: const TextStyle(color: Colors.red),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      errorBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                        borderSide: const BorderSide(
-                          color: Colors.red,
-                          width: 2.0,
-                        ),
-                      ),
-                      focusedErrorBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                        borderSide: const BorderSide(
-                          color: Colors.red,
-                          width: 2.0,
-                        ),
                       ),
                     ),
                     onChanged: (String? value) {
@@ -267,23 +199,8 @@ class _ProductFormState extends State<ProductForm> {
                     decoration: InputDecoration(
                       hintText: "Insert product description",
                       labelText: "Product Description",
-                      errorStyle: const TextStyle(color: Colors.red),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      errorBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                        borderSide: const BorderSide(
-                          color: Colors.red,
-                          width: 2.0,
-                        ),
-                      ),
-                      focusedErrorBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                        borderSide: const BorderSide(
-                          color: Colors.red,
-                          width: 2.0,
-                        ),
                       ),
                     ),
                     onChanged: (String? value) {
@@ -305,23 +222,8 @@ class _ProductFormState extends State<ProductForm> {
                     decoration: InputDecoration(
                       hintText: "Insert product thumbnail URL",
                       labelText: "Product Thumbnail URL",
-                      errorStyle: const TextStyle(color: Colors.red),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      errorBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                        borderSide: const BorderSide(
-                          color: Colors.red,
-                          width: 2.0,
-                        ),
-                      ),
-                      focusedErrorBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                        borderSide: const BorderSide(
-                          color: Colors.red,
-                          width: 2.0,
-                        ),
                       ),
                     ),
                     onChanged: (String? value) {
@@ -364,43 +266,47 @@ class _ProductFormState extends State<ProductForm> {
                           Theme.of(context).colorScheme.primary,
                         ),
                       ),
-                      onPressed: () {
+                      onPressed: () async {
                         if (_formKey.currentState!.validate()) {
-                          showDialog(
-                            context: context,
-                            builder: (context) {
-                              return AlertDialog(
-                                title: const Text('Product successfully saved'),
-                                content: SingleChildScrollView(
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text("Name: $_name"),
-                                      Text("Brand: $_brand"),
-                                      Text("Category: $_category"),
-                                      Text("Price: $_price"),
-                                      Text("Stock: $_stock"),
-                                      Text("Description: $_description"),
-                                      Text("Thumbnail URL: $_thumbnailUrl"),
-                                      Text(
-                                        "Featured: ${_isFeatured ? "Yes" : "No"}",
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                actions: [
-                                  TextButton(
-                                    child: const Text('OK'),
-                                    onPressed: () {
-                                      Navigator.pop(context);
-                                      _formKey.currentState!.reset();
-                                    },
-                                  ),
-                                ],
-                              );
-                            },
+                          final response = await request.postJson(
+                            "https://nathanael-leander-ballin.pbp.cs.ui.ac.id/create-flutter/",
+                            jsonEncode({
+                              "name": _name,
+                              "brand": _brand,
+                              "category": _category,
+                              "price": _price,
+                              "stock": _stock,
+                              "description": _description,
+                              "thumbnail": _thumbnailUrl,
+                              "is_featured": _isFeatured,
+                            }),
                           );
+                          if (context.mounted) {
+                            if (response['status'] == 'success') {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  behavior: SnackBarBehavior.floating,
+                                  content: Text("Product added successfully!"),
+                                  backgroundColor: Colors.green,
+                                ),
+                              );
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      MyHomePage(username: widget.username),
+                                ),
+                              );
+                            } else {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  behavior: SnackBarBehavior.floating,
+                                  content: Text("Failed to add product."),
+                                  backgroundColor: Colors.red,
+                                ),
+                              );
+                            }
+                          }
                         }
                       },
                       child: const Text(

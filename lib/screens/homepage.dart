@@ -3,7 +3,9 @@ import 'package:ballin_mobile/widgets/home_buttons.dart';
 import 'package:ballin_mobile/widgets/drawer.dart';
 
 class MyHomePage extends StatelessWidget {
-  MyHomePage({super.key});
+  final String? username;
+
+  MyHomePage({super.key, this.username});
 
   final List<ItemHomepage> items = [
     ItemHomepage("All Products", Icons.storefront_rounded, Colors.blue),
@@ -23,7 +25,7 @@ class MyHomePage extends StatelessWidget {
         backgroundColor: Theme.of(context).colorScheme.secondary,
         foregroundColor: Colors.black,
       ),
-      drawer: const LeftDrawer(),
+      drawer: LeftDrawer(username: username),
       body: Column(
         children: [
           Expanded(
@@ -67,7 +69,7 @@ class MyHomePage extends StatelessWidget {
                           crossAxisCount: 3,
                           shrinkWrap: true,
                           children: items.map((ItemHomepage item) {
-                            return HomeButton(item);
+                            return HomeButton(item, username);
                           }).toList(),
                         ),
                       ],
